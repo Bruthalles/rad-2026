@@ -1,0 +1,40 @@
+Procurar alguma coisa
+
+a - procura a letra a
+\w - alfanumerico (letras e numeros)
+\d - numeros
+\s - espaço ou pular linha
+. - pega qualquer coisa
+
+Definir quantidade de alguma coisa
+
++ - pega um ou mais do comando anterior
+{n} - pega n vezes
+
+Agrupar alguma coisa
+
+[] - procura um OU o outro
+(?<=..) - procura mas não inclui na resposta, no começo
+(?=...) - procura mas não inclui na resposta, no final
+
+
+
+Nome: pedro dos santos             Data nascimento: 01/01/2000
+cpf: 123.456.789-00       Endereço: nova america, del castilho                                    
+                                                                 loja 3
+Valor dos serviços: R$ 1.200,00
+Tipo de contrato: Mei
+--------------------------------------------------------------
+Nome: ana             Data nascimento: 01-01-2010
+cpf: 123.456.789-00       Endereço: norte shop
+Valor dos serviços: R$ 1200
+Tipo de contrato: clt
+
+
+
+https://regex101.com/
+
+
+Montar 3 regex diferentes, um para procurar valor, outro para 
+procurar data e outro para procurar endereço (procurar regex lazy)
+
