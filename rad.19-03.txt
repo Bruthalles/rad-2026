@@ -31,10 +31,5 @@ Valor dos serviços: R$ 1200
 Tipo de contrato: clt
 
 
-
 https://regex101.com/
-
-
-Montar 3 regex diferentes, um para procurar valor, outro para 
-procurar data e outro para procurar endereço (procurar regex lazy)
 
