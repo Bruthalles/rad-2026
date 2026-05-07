@@ -74,4 +74,4 @@ patterns = [
 
 for name, pattern in patterns:
     matches = re.findall(pattern, text)
-    print(f'{name}:', pattern, '=>', matches)
+    print(f' {name}: {pattern} => {matches}')
