@@ -1,5 +1,6 @@
-import sqlite3
-
+import sqlite3,os
+from classes.Classes import Pessoa, Veiculo, Marca
+######################################################################
 tbl_pessoa_command = ''' CREATE TABLE Pessoa(
                 id INTEGER NOT NULL,
                 cpf INTEGER NOT NULL,
@@ -31,32 +32,41 @@ tbl_marca_command = ''' CREATE TABLE Marca(
                );
                 '''
 
-class Pessoa:
-    def __init__(self,id,cpf,nome,nascimento,usa_oculos):
-        self.id = id
-        self.cpf = cpf
-        self.nome = nome
-        self.nascimento = nascimento
-        self.usa_oculos = usa_oculos
-        
-    def __str__(self):
-        return f"Id:{self.id}, CPF:{self.cpf}, Nome:{self.nome}, Nascimento:{self.nascimento}, Usa oculos: {self.usa_oculos}"
-
-
-pessoa = Pessoa(9,19344594,'thalles','2005-04-02',True)
-
-
-command = '''INSERT INTO Pessoa 
+insert_pessoa_command = '''INSERT INTO Pessoa 
             VALUES(:id,:cpf,:nome,:nascimento,:usa_oculos);'''
 
+insert_carro_command = '''INSERT INTO Veiculo
+            VALUES(:placa,:ano,:cor,:motor,:proprietario,:marca);'''
+
+insert_marca_command = '''INSERT INTO Marca
+            VALUES(:id,:nome,:sigla);'''
+
+########################################################################
+
+pessoa = Pessoa(id=11,cpf=11231111,nome='sonaldo',nascimento='2005-04-02',usa_oculos=False)
+
+carro = Veiculo(placa='vTv-2009',ano=2010,cor='branco',motor=5.0,proprietario=44332211,marca=4)
+
+marca1 = Marca(id=4,nome="ferrari",sigla="FR")
+
+########################################################################
 try:
-    conection = sqlite3.connect("meu-banco.db")
+
+    path = os.path.join(os.path.dirname(__file__),'meu-banco.db')
+
+    conection = sqlite3.connect(path)
 
     cursor = conection.cursor()
-    cursor.execute(command, vars(pessoa))
-    print("pessoa em dicionario: ",vars(pessoa))    
-    print("\npessoa normal: ",pessoa)
-    
+
+    # cursor.execute(tbl_pessoa_command)
+    # cursor.execute(tbl_veiculo_command)
+    # cursor.execute(tbl_marca_command)
+
+    cursor.execute(insert_pessoa_command, vars(pessoa))
+    # print("pessoa em dicionario: ",vars(pessoa))    
+    # print("\npessoa normal: ",pessoa)
+    cursor.execute(insert_carro_command, vars(carro))
+    cursor.execute(insert_marca_command, vars(marca1))
     
     conection.commit()
 
